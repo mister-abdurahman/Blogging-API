@@ -1,17 +1,19 @@
 {
-  "name": "Blogging-API",
+  "name": "blogging-api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mister-abdurahman/Blogging-API.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aramide Ramadan",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/mister-abdurahman/Blogging-API/issues"
@@ -32,5 +34,9 @@
     "passport-local": "^1.0.0",
     "passport-local-mongoose": "^7.1.2",
     "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "jest": "^29.3.0",
+    "supertest": "^6.3.1"
   }
 }

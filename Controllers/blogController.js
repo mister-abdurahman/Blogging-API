@@ -2,13 +2,33 @@ const express = require('express')
 const blog = require('../models/blog')
 const user = require('../models/user')
 const passport = require('passport')
+
 require('../middlewares/passport')
 
 const app = express()
 
-
 // CRUD controller functions
 
+// ///////////////////////
+// Sign Up
+// app.post('/signup', async (req, res, next) => {
+//     try {
+//     console.log(req.headers)    
+//     const {email, password, first_name, last_name} = req.body;
+//     if(!email || !password || !first_name || !last_name){
+//         return next(new Error("Ensure you enter the following details: First name, Last name, an Email and a password"))
+//     }
+//     const user = await userModel.create({email, password, first_name, last_name})
+//     const payload = { user: {id: user._id, email: user.email} } 
+//     const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
+//     user.password = undefined //a trick to prevent the password from being displayed, does not affect the actual password.
+//     return res.status(200).json({token, user})
+//     } catch (error) {
+//     console.log(error)
+//     res.status(500).send("Something broke")
+//     }
+//     })
+////////////////////////////////////
 
 // Get all Blogs ✔
 async function getAllBlogs(req, res, next) {
