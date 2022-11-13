@@ -26,5 +26,15 @@ afterAll((done) => {
 
 test("Get all blogs", async () => {
     const res = await supertest(app).get("/blogs")
-    console.log(res)
+    expect(res.statusCode).toBe(200)
+})
+
+test("Get single blogs", async () => {
+    const res = (await supertest(app).get("/blogs/637111b7b48d63a8c050ab2d"))
+    expect(res.statusCode).toBe(200)
+})
+
+test("Get Published blogs", async () => {
+    const res = (await supertest(app).get("/blogs/published"))
+    expect(res.statusCode).toBe(200)
 })
