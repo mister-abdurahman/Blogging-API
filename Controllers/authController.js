@@ -5,7 +5,6 @@ dotenv.config()
 
 async function signup(req, res, next){
     try {
-        console.log(req.headers)    
         const {email, password, first_name, last_name} = req.body;
         if(!email || !password || !first_name || !last_name){
             return next(new Error("Ensure you enter the following details: First name, Last name, an Email and a password"))
@@ -14,9 +13,8 @@ async function signup(req, res, next){
         const payload = { user: {id: user._id, email: user.email} } 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
         user.password = undefined //a trick to prevent the password from being displayed, does not affect the actual password.
-        return res.status(200).json({token, user})
+        return res.status(200).json({status: "success",token, user})
         } catch (error) {
-        console.log(error)
         res.status(500).send("Something broke")
         }
 }
@@ -35,7 +33,7 @@ async function login(req, res, next){
         const payload = { user: {id: user._id, email: user.email} } 
         const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
         user.password = undefined //a trick to prevent the password from being displayed, does not affect the actual password.
-        return res.status(200).json({token, user}) 
+        return res.status(200).json({status: "success",token, user}) 
         } catch (error) {
         console.log(error)
         res.status(500).send("Something broke")

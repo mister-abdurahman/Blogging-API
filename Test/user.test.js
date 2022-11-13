@@ -31,6 +31,21 @@ test('Sign Up', async () => {
         email: "ramadan@gmail.com",
         password: "ramadan12345"
     }
-    const res = await supertest(app).post("/signup").set("content-type", "application/x-www-form-urlencoded").send(userData)
-    console.log(res)
+    const res = await supertest(app).post("/auth/signup").set("content-type", "application/x-www-form-urlencoded").send(userData)
+    expect(res.statusCode).toBe(200)
+    expect(res.body.status).toBe("success")
+    expect(res.ok).toBe(true)
 })
+
+
+test('Log In', async () => {
+    const userData = {
+        email: "ramadan@gmail.com",
+        password: "ramadan12345"
+    }
+    const res = await supertest(app).post("/auth/login").set("content-type", "application/x-www-form-urlencoded").send(userData)
+    expect(res.statusCode).toBe(200)
+    expect(res.body.status).toBe("success")
+    expect(res.ok).toBe(true)
+})
+
