@@ -26,7 +26,7 @@ blogRouter.delete('/owner/:id', passport.authenticate('jwt', {session: false}) ,
 blogRouter.get('/owner/:id', passport.authenticate('jwt', {session: false}),blogController.getOwnerBlog);
 
 // Get a single Blog
-blogRouter.get('/:id', blogController.getSingleBlog);
+blogRouter.get('/:id', passport.authenticate('jwt', {session: false}), blogController.getSingleBlog);
 
 
 
