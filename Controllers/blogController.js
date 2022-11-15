@@ -28,16 +28,16 @@ async function getAllBlogs(req, res, next) {
         // Filtering (searching) by author, title and Tags
         if(req.query.author){
             const searchByAuthor = await blogs.find({author: req.query.author})
-            res.json(searchByAuthor)
+            res.json({status: "success", searchByAuthor})
         }else if(req.query.title){
             const searchByTitle = await blogs.find({title: req.query.title})
-            res.json(searchByTitle)
+            res.json({status: "success", searchByTitle})
         }else if(req.query.tags){
             const searchByTags = await blogs.find({tags: req.query.tags})
-            res.json(searchByTags)
+            res.json({status: "success", searchByTags})
         }else{
             const theBlogs = await blogs
-            res.json(theBlogs)
+            res.json({status: "success", theBlogs})
         }
             } catch (err) {
         next(err)
@@ -50,7 +50,7 @@ async function getSingleBlog(req, res, next) {
         const id = req.params.id
         const singleBlog = await blog.find({_id: id}).populate("author_id", "-password")
         singleBlog[0].read_count += 1
-        res.status(200).send({ message: `Hi ${singleBlog[0].author}, Your Email is ${singleBlog[0].author_id.email}` , data: singleBlog })
+        res.status(200).send({ status: "success", message: `Hi ${singleBlog[0].author}, Your Email is ${singleBlog[0].author_id.email}` , data: singleBlog })
     } catch (err) {
         next(err)
     }
@@ -78,16 +78,16 @@ async function getPublishedBlogs(req, res, next) {
         // Filtering (searching) by author, title and Tags
         if(req.query.author){
             const searchByAuthor = await publishedBlogs.find({author: req.query.author})
-            res.json(searchByAuthor)
+            res.json({status: "success", searchByAuthor})
         }else if(req.query.title){
             const searchByTitle = await publishedBlogs.find({title: req.query.title})
-            res.json(searchByTitle)
+            res.json({status: "success", searchByTitle})
         }else if(req.query.tags){
             const searchByTags = await publishedBlogs.find({tags: req.query.tags})
-            res.json(searchByTags)
+            res.json({status: "success", searchByTags})
         }else{
             const thePublishedBlogs = await publishedBlogs
-            res.json(thePublishedBlogs)
+            res.json({status: "success", thePublishedBlogs})
         }
 
     } catch (err) {
@@ -113,15 +113,15 @@ async function getOwnerBlog(req, res, next) {
         // Filtering by state
         if(req.query.state == 'draft'){
           const draftedBlogs = await ownerBlog.find({state: 'draft'})
-          res.json(draftedBlogs)  
+          res.json({status: "success" , draftedBlogs})  
         }
         else if(req.query.state == 'published'){
             const publishedBlogs = await ownerBlog.find({state: 'published'})
-            res.json(publishedBlogs)
+            res.json({status: "success", publishedBlogs})
         }else{
             //if state filter is not declared
             const theOwnerBlogs = await ownerBlog
-            res.json(theOwnerBlogs)
+            res.json({status: "success", theOwnerBlogs})
         }
     } catch (err) {
         next(err)
@@ -135,7 +135,7 @@ async function updateOwnerBlog(req, res, next){
         const newUpdate = req.body
         const updatedBlog = await blog.findOneAndUpdate({author_id: id, state: 'draft'}, newUpdate, {new: true})
         // await updateBlog.save()
-        res.json(updatedBlog)
+        res.json({status: "success" , updatedBlog})
     } catch (error) {
         next(error)
     }
@@ -147,10 +147,11 @@ async function updateOwnerBlog(req, res, next){
 async function addBlog(req, res, next) {
     let blogContent = req.body;
     blogContent.timestamp = new Date()
+    blogContent.reading_time = blogContent.body.split(" ").length * 1 //each word takes 1sec to read 
     
     try {
         const newBlog = await blog.create(blogContent);
-        res.status(201).json(newBlog);
+        res.status(201).json({status: "success", newBlog});
     } catch (error) {
         next(error);
     }
@@ -160,9 +161,9 @@ async function addBlog(req, res, next) {
 async function deleteBlog(req, res, next) {
     const id = req.params.id
      try {
-        const blogToBeDeleted = await blog.findOneAndDelete({author_id: id})
+        const blogToBeDeleted = await blog.findOneAndDelete({_id: id})
         const blogs = await blog.find()
-        res.json(blogs);
+        res.json({status: "success", blogs});
     } catch (error) {
         next(error);
     }

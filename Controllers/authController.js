@@ -11,7 +11,7 @@ async function signup(req, res, next){
         }
         const user = await userModel.create({email, password, first_name, last_name})
         const payload = { user: {id: user._id, email: user.email} } 
-        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '1h' })
+        const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRY_TIME })
         user.password = undefined //a trick to prevent the password from being displayed, does not affect the actual password.
         return res.status(200).json({status: "success",token, user})
         } catch (error) {
