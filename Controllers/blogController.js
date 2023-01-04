@@ -1,7 +1,5 @@
 const express = require('express')
 const blog = require('../models/blog')
-const user = require('../models/user')
-const passport = require('passport')
 
 require('../middlewares/passport')
 
