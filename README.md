@@ -1,10 +1,13 @@
-This is a Blogging-API that allows new users to sign up, create an account and sign in using the jwt strategy and authentication. Registered Users that are logged in can do special functionalities like creating, publishing or deleting a blog.
-Blogs can also be sorted based on authors, titles and tags. JWT authentication is used to protect certain routes that require the JWT token to be accessed. 
+This is a Blogging-API that allows new users to create an account and sign in with their registered email and password. Registered Users that are logged in can do functionalities like creating, publishing, editing or deleting a blog.
+
+A user can do CRUD (create, delete, update, delete) on his own blogs but can only read other users blogs.
+
+A view count is attached to each blog such that when a blog is read, its number of views is increased accordingly
+
+This API is light and user friendly for non ITs as it was built using a views tools (ejs).
 
 API Functionalities:
-To Sign Up, Go to the /auth/signup route. Then input your Email and Password.
-To Log in, Go to the /auth/login route. Then input your registered Email and correct password  
-Only authenticated users can create a blog and the required fields to create a blog are: title, author, state, tags, body and author_id   
-Authenticated routes can only be accessed by logged in users whereby their generated token upon logging in is used to access authenticated routes. Note that the token should be added in the bearer authentication and expires after an hour.
-When the owner of a blog wants to get his blog he should input his author_id in the /order/:id route to get all his blogs  
-To delete a blog. Use the id of the intended blog in the req.params field 
+To Sign Up, input your FirstName, LastName, Email and Password.
+To Log in, input your registered Email and correct password.
+
+Token session lasts for an hour. This means you'll be logged out and to log in again to use the API after an hour of idleness
