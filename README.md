@@ -4,7 +4,7 @@ A user can do CRUD (create, delete, update, delete) on his own blogs but can onl
 
 A view count is attached to each blog such that when a blog is read, its number of views is increased accordingly
 
-This API is light and user friendly for non ITs as it was built using a views tools (ejs).
+This API is light and user friendly for non ITs as it was built using a views engine (ejs).
 
 API Functionalities:
 To Sign Up, input your FirstName, LastName, Email and Password.
