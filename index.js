@@ -48,7 +48,7 @@ app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
   // return res.status(statusCode).json({ status: "Error !", message });
-  console.log(err);
+  res.render("blogs/error", { error: message });
 }); //*
 
 module.exports = app; //*
