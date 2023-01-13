@@ -21,7 +21,7 @@ blogRouter.get(
 
 blogRouter.post("/:id", blogController.createBlog);
 
-blogRouter.put("/:id", blogController.editBlog);
+blogRouter.put("/:blogId/:id", blogController.editBlog);
 
 blogRouter.delete("/:id/:userId", blogController.deleteBlog);
 

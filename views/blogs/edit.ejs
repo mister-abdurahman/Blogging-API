@@ -10,7 +10,7 @@
 <body>
     <div class="container">
        <h1 class="mb-4">Edit Blog</h1>
-       <form action="/blogs/<%= user.id %>?_method=PUT" method="POST">
+       <form action="/blogs/<%= blog.id %>/<%= user.id %>?_method=PUT" method="POST">
         <%- include('_form_fields') %>
        </form>
     </div>

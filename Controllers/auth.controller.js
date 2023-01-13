@@ -28,7 +28,7 @@ async function signUp(req, res, next) {
   try {
     const { email, password, firstName, lastName } = req.body;
     if (!email || !password || !firstName || !lastName) {
-      return next(new Error("Ensure you fill all the inputs correctly"));
+      throw new Error("Ensure you fill all the inputs correctly");
     }
     const user = await User.create({
       email,
@@ -36,12 +36,12 @@ async function signUp(req, res, next) {
       firstName,
       lastName,
     });
-    const payload = { user: { id: user._id, email: user.email } };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, {
-      expiresIn: process.env.JWT_EXPIRY_TIME,
-    });
-    user.password = undefined;
+    // const payload = { user: { id: user._id, email: user.email } };
+    // const token = jwt.sign(payload, process.env.JWT_SECRET, {
+    //   expiresIn: process.env.JWT_EXPIRY_TIME,
+    // });
 
+    // await user.save();
     res.redirect("/auth/login");
   } catch (error) {
     res.render("blogs/register", {
@@ -64,9 +64,10 @@ async function logIn(req, res, next) {
     //
 
     const isValidPassword = await user.isValidPassword(password);
-    if (!isValidPassword) throw next(new Error("password is incorrect !"));
+    if (!isValidPassword) throw new Error("password is incorrect !");
 
     //
+    delete user.password;
 
     const payload = { user: { id: user._id, email: user.email } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
@@ -74,14 +75,13 @@ async function logIn(req, res, next) {
     });
     res.cookie("jwt", token, { httpOnly: true });
 
-    user.password = undefined;
-
     const blogs = await Blogs.find({
       userId: user.id,
       state: "published",
     }).sort({
       createdAt: "desc",
     });
+
     res.render("blogs/index", { user: user, blogs: blogs, error: undefined });
   } catch (error) {
     res.render("blogs/enter", {

@@ -550,3 +550,59 @@
 {"level":"info","message":"Connected to MongoDB successfully"}
 {"level":"info","message":"Server is running on port 8000"}
 {"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"code":"ECONNREFUSED","hostname":"_mongodb._tcp.cluster0.wqtl0gm.mongodb.net","level":"error","message":"Error connecting to MongoDB querySrv ECONNREFUSED _mongodb._tcp.cluster0.wqtl0gm.mongodb.net","stack":"Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.wqtl0gm.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:251:17)","syscall":"querySrv"}
+{"date":"Thu Jan 12 2023 21:26:14 GMT+0100 (West Africa Standard Time)","error":{"code":"ECONNREFUSED","hostname":"_mongodb._tcp.cluster0.wqtl0gm.mongodb.net","syscall":"querySrv"},"exception":true,"level":"error","message":"uncaughtException: querySrv ECONNREFUSED _mongodb._tcp.cluster0.wqtl0gm.mongodb.net\nError: querySrv ECONNREFUSED _mongodb._tcp.cluster0.wqtl0gm.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:251:17)","os":{"loadavg":[0,0,0],"uptime":865589},"process":{"argv":["C:\\Program Files\\nodejs\\node.exe","C:\\Users\\aramr\\Documents\\GitHub\\Blogging-API\\server.js"],"cwd":"C:\\Users\\aramr\\Documents\\GitHub\\Blogging-API","execPath":"C:\\Program Files\\nodejs\\node.exe","gid":null,"memoryUsage":{"arrayBuffers":18442010,"external":19535011,"heapTotal":76161024,"heapUsed":44294640,"rss":109330432},"pid":10136,"uid":null,"version":"v18.12.1"},"stack":"Error: querySrv ECONNREFUSED _mongodb._tcp.cluster0.wqtl0gm.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:251:17)","trace":[{"column":17,"file":"node:internal/dns/promises","function":"QueryReqWrap.onresolve [as oncomplete]","line":251,"method":"onresolve [as oncomplete]","native":false}]}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
+{"level":"info","message":"Server is running on port 8000"}
+{"level":"info","message":"Connected to MongoDB successfully"}
