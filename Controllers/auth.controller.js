@@ -30,6 +30,9 @@ async function signUp(req, res, next) {
     if (!email || !password || !firstName || !lastName) {
       throw new Error("Ensure you fill all the inputs correctly");
     }
+    const emailExists = await User.findOne({ email });
+    if (emailExists) throw new Error("Email already exists !");
+
     const user = await User.create({
       email,
       password,
@@ -52,29 +55,59 @@ async function signUp(req, res, next) {
 }
 
 // login and route to my blogs page [POST]
+// async function logIn(req, res, next) {
+//   try {
+//     const { email, password } = req.body;
+//     if (!email || !password) {
+//       throw new Error("email and password required");
+//     }
+//     const user = await User.findOne({ email });
+//     if (!user) throw new Error("User does not exist");
+
+//     //
+
+//     const isValidPassword = await user.isValidPassword(password);
+//     if (!isValidPassword) throw new Error("password is incorrect !");
+
+//     //
+//     delete user.password;
+
+//     const payload = { user: { id: user._id, email: user.email } };
+//     const token = jwt.sign(payload, process.env.JWT_SECRET, {
+//       expiresIn: "1h",
+//     });
+//     res.cookie("jwt", token, { httpOnly: true });
+
+//     const blogs = await Blogs.find({
+//       userId: user.id,
+//       state: "published",
+//     }).sort({
+//       createdAt: "desc",
+//     });
+
+//     res.render("blogs/index", { user: user, blogs: blogs, error: undefined });
+//   } catch (error) {
+//     res.render("blogs/enter", {
+//       error: error,
+//     });
+//     next(error);
+//   }
+// }
+
 async function logIn(req, res, next) {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    throw new Error("email and password required");
+  }
+
   try {
-    const { email, password } = req.body;
-    if (!email || !password) {
-      throw new Error("email and password required");
-    }
-    const user = await User.findOne({ email });
-    if (!user) throw new Error("User does not exist");
-
-    //
-
-    const isValidPassword = await user.isValidPassword(password);
-    if (!isValidPassword) throw new Error("password is incorrect !");
-
-    //
-    delete user.password;
-
+    const user = await User.login(email, password);
     const payload = { user: { id: user._id, email: user.email } };
     const token = jwt.sign(payload, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
     res.cookie("jwt", token, { httpOnly: true });
-
     const blogs = await Blogs.find({
       userId: user.id,
       state: "published",

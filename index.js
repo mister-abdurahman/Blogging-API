@@ -44,6 +44,11 @@ app.get("/", async (req, res) => {
   res.render("blogs/enter", { user: new User(), error: undefined });
 });
 
+app.get("*", async (req, res) => {
+  //   res.status(200).send("Welcome to the Tech Blog");
+  res.render("blogs/page_not_found");
+});
+
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;
   const message = err.message || "Internal Server Error";
