@@ -1,9 +1,13 @@
 {
   "name": "blogging-api",
   "version": "1.0.0",
-  "description": "",
+  "description": "Tech Blog App for Techies",
   "main": "index.js",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
+    "start": "node index.js",
     "test": "jest",
     "devStart": "nodemon server.js"
   },
