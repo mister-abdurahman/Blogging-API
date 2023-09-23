@@ -2,7 +2,7 @@
   "name": "blogging-api",
   "version": "1.0.0",
   "description": "Tech Blog App for Techies",
-  "main": "index.js",
+  "main": "server.js",
   "engines": {
     "node": "18.x"
   },
